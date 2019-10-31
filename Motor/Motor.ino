@@ -1,13 +1,13 @@
-const int motor1A = 10;
-const int motor2A = 11;
-const int motor1B = 6;
-const int motor2B = 5;
+const int motorR1 = 9;
+const int motorR2 = 10;
+const int motorL1 = 11;
+const int motorL2 = 6;
 
 void setup() {
-  pinMode(motor1A, OUTPUT);
-  pinMode(motor2A, OUTPUT);
-  pinMode(motor1B, OUTPUT);
-  pinMode(motor2B, OUTPUT);
+  pinMode(motorR1, OUTPUT);
+  pinMode(motorR2, OUTPUT);
+  pinMode(motorL1, OUTPUT);
+  pinMode(motorL2, OUTPUT);
  
   
 }
@@ -15,58 +15,52 @@ void setup() {
 void loop() {
   forward();
   delay(3000);
-  back();
-  delay(2000);
-  right();
-  delay(2000);
-  left();
-  delay(2000);
   stop();
-  delay(2000);
+  delay(3000);
 
 }
 
 void forward() {
-  digitalWrite(motor1A,HIGH);
-  digitalWrite(motor2A,LOW);
-  digitalWrite(motor1B,HIGH);
-  digitalWrite(motor2B,LOW);
-  analogWrite(motor1A,200);
-  analogWrite(motor1B,200);
+  digitalWrite(motorR1,HIGH);
+  digitalWrite(motorR2,LOW);
+  digitalWrite(motorL1,HIGH);
+  digitalWrite(motorL2,LOW);
+  analogWrite(motorR1, 100);
+
   
 }
 void back() {
-  digitalWrite(motor1A,LOW);
-  digitalWrite(motor2A,HIGH);
-  digitalWrite(motor1B,LOW);
-  digitalWrite(motor2B,HIGH);
-  analogWrite(motor2A,200);
-  analogWrite(motor2B,200);
+  digitalWrite(motorR1,LOW);
+  digitalWrite(motorR2,HIGH);
+  digitalWrite(motorL1,LOW);
+  digitalWrite(motorL2,HIGH);
+  analogWrite(motorR2,200);
+  analogWrite(motorL2,200);
   
 }
 
 void right() {
-  digitalWrite(motor1A,LOW);
-  digitalWrite(motor2A,HIGH);
-  digitalWrite(motor1B,HIGH);
-  digitalWrite(motor2B,LOW);
-  analogWrite(motor2A,200);
-  analogWrite(motor2B,100);
+  digitalWrite(motorR1,LOW);
+  digitalWrite(motorR2,HIGH);
+  digitalWrite(motorL1,HIGH);
+  digitalWrite(motorL2,LOW);
+  analogWrite(motorR2,200);
+  analogWrite(motorL2,100);
 }
 
 void left() {
-  digitalWrite(motor1A,HIGH);
-  digitalWrite(motor2A,LOW);
-  digitalWrite(motor1B,HIGH);
-  digitalWrite(motor2B,LOW);
-  analogWrite(motor2A,100);
-  analogWrite(motor2B,200);
+  digitalWrite(motorR1,HIGH);
+  digitalWrite(motorR2,LOW);
+  digitalWrite(motorL1,HIGH);
+  digitalWrite(motorL2,LOW);
+  analogWrite(motorR2,100);
+  analogWrite(motorL2,200);
 }
 
 
 void stop() {
-  digitalWrite(motor1A,LOW);
-  digitalWrite(motor2A,LOW);
-  digitalWrite(motor1B,LOW);
-  digitalWrite(motor2B,LOW);
+  digitalWrite(motorR1,LOW);
+  digitalWrite(motorR2,LOW);
+  digitalWrite(motorL1,LOW);
+  digitalWrite(motorL2,LOW);
 }
