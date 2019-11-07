@@ -64,6 +64,9 @@ void processAccelData(){
   gForceX = (accelX - erroraccelX) / 16384.0;
   gForceY = (accelY - erroraccelY) / 16384.0; 
   //gForceZ = (accelZ - erroraccelZ) / 16384.0;
+
+  if (abs(gForceY) <= 0.05) gForceY = 0;
+  if (abs(gForceX) <= 0.05) gForceX = 0;
 }
 
 void recordGyroRegisters() {
@@ -98,9 +101,10 @@ void calculate_IMU_error() {
     float offsetgyroX = (Wire.read() << 8 | Wire.read());
     float offsetgyroY = (Wire.read() << 8 | Wire.read());
     float offsetgyroZ = (Wire.read() << 8 | Wire.read());
-    errorgyroX += offsetgyroX/131.0;
-    errorgyroY += offsetgyroY/131.0;
-    errorgyroZ += offsetgyroZ/131.0;
+    errorgyroX += offsetgyroX;
+    errorgyroY += offsetgyroY;
+    errorgyroZ += offsetgyroZ;
+    delay(20);
   }
   erroraccelX /= 200;
   erroraccelY /= 200;
@@ -121,6 +125,11 @@ void calcVector() {
   x += cos(angle) * velocity * deltaSec;
   y += sin(angle) * velocity * deltaSec;
 
+  Serial.print("x: ");
+  Serial.print(x);
+  Serial.print("y:");
+  Serial.print(y);
+  Serial.print("gForceY:");
   Serial.println(gForceY);
 }
 
